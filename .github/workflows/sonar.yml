@@ -35,7 +35,7 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Restore dependencies
-        run: dotnet restore 
+        run: cd Bank && dotnet restore 
 
       - name: Run tests with coverage
         run: dotnet test --collect:"XPlat Code Coverage;Format=opencover"
