@@ -42,7 +42,7 @@ jobs:
           dotnet pack "Bank/Bank.sln" --configuration Release --output ./packages
       - name: Publicar paquete en GitHub Packages
         run: |
-          dotnet nuget push ./packages/*.nupkg --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key "${{ secrets.GH_TOKEN }}" --skip-duplicate
+          dotnet nuget push ./packages/*.nupkg --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.GH_TOKEN }} --skip-duplicate
   release:
     name: Generate GitHub Release
     runs-on: ubuntu-latest
