@@ -7,12 +7,12 @@ env:
 
 on:
   push:
-    branches: [ "main" ] #
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
   sonarqube:
-    name: Sonarqube Analysis & Publish NuGet
+    name: Sonarqube Analysis and NuGet Publishing
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -29,7 +29,7 @@ jobs:
       - name: Restaurar dependencias
         run: dotnet restore "Bank/Bank.sln"
       - name: Iniciar análisis SonarQube
-        run: dotnet-sonarscanner begin /k:"${{ env.SONAR_PROJECT }}" /o:"${{ env.SONAR_ORG }}" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="Bank/Bank.Domain.Tests/TestsResults/**/coverage.opencover.xml" /d:sonar.qualitygate.wait=true
+        run: dotnet-sonarscanner begin /k:"${{ env.SONAR_PROJECT }}" /o:"${{ env.SONAR_ORG }}" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="Bank/**/coverage.opencover.xml" /d:sonar.qualitygate.wait=true
       - name: Ejecutar pruebas
         run: dotnet test "Bank/Bank.sln" --collect:"XPlat Code Coverage;Format=opencover"
       - name: Compilar solución
@@ -44,7 +44,7 @@ jobs:
         run: |
           dotnet nuget push ./packages/*.nupkg --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.GH_TOKEN }} --skip-duplicate
   release:
-    name: Generate GitHub Release
+    name: Generar Release en GitHub
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
