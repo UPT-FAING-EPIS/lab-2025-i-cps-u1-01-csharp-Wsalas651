@@ -1,0 +1,1 @@
+‹RuC:\Users\ASUS\Documents\CALIDAD\lab-2025-i-cps-u1-01-csharp-Wsalas651\Bank\Bank.Domain.Tests\Bank.Domain.Tests.csproj¢net8.0òCSharp12

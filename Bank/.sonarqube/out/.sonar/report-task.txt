@@ -1,0 +1,7 @@
+organization=72943816s
+projectKey=72943816s_apibank
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.61742
+dashboardUrl=https://sonarcloud.io/dashboard?id=72943816s_apibank
+ceTaskId=AZYeJJkwqIS_dLZqVSPk
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZYeJJkwqIS_dLZqVSPk
