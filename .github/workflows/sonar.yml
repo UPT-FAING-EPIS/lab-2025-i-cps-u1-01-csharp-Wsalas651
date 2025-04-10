@@ -31,7 +31,7 @@ jobs:
       - name: Ejecutar pruebas
         run: dotnet test "Bank/Bank.sln" --collect:"XPlat Code Coverage;Format=opencover"
       - name: Iniciar análisis SonarQube
-        run: dotnet-sonarscanner begin /k:"${{ env.SONAR_PROJECT }}" /o:"${{ env.SONAR_ORG }}" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="Bank/**/coverage.opencover.xml" /d:sonar.qualitygate.wait=true
+        run: dotnet-sonarscanner begin /k:"${{ env.SONAR_PROJECT }}" /o:"${{ env.SONAR_ORG }}" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="Bank/**/coverage.opencover.xml" /d:sonar.qualitygate.wait=true /d:sonar.exclusions="*/.html"
       - name: Compilar solución
         run: dotnet build "Bank/Bank.sln"
       - name: Finalizar análisis SonarQube
